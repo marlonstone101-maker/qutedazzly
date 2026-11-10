@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qute & Dazzly Accessories & More | High-End Luxury Jewelry</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Luxury Serif & Clean Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: {
+                            100: '#FDF7E7',
+                            300: '#E6C687',
+                            400: '#D4AF37',
+                            500: '#C5A028',
+                            600: '#B8860B',
+                            700: '#8B6508',
+                        },
+                        obsidian: '#111111',
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    },
+                    animation: {
+                        'marquee': 'marquee 30s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #BF953F 0%, #FCF6BA 25%, #B38728 50%, #FBF5B7 75%, #AA771C 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 4px 20px -5px rgba(212, 175, 55, 0.15);
+        }
+
+        .gold-border-glow:hover {
+            border-color: rgba(212, 175, 55, 0.9);
+            box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Completely Transparent Header Overlay */
+        .transparent-header {
+            background: transparent;
+            backdrop-filter: blur(4px);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #D4AF37;
+            border-radius: 3px;
+        }
+
+        .modal-blur {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-white text-obsidian font-sans antialiased selection:bg-gold-400 selection:text-white">
+
+    <!-- Top Announcement Ticker (Moving across screen) -->
+    <div class="bg-obsidian text-gold-300 text-xs py-2 px-4 border-b border-gold-600/30 overflow-hidden whitespace-nowrap relative z-50">
+        <marquee behavior="scroll" direction="left" scrollamount="5" class="tracking-widest uppercase font-medium">
+            ✨ Kingston, Jamaica Based &nbsp;&bull;&nbsp; Stainless Steel Jewelry &nbsp;&bull;&nbsp; Express Local Delivery Available &nbsp;&bull;&nbsp; No Refunds &bull; EST. Sept 2022 ✨
+        </marquee>
+    </div>
+
+    <!-- Main Navigation Header (Completely Transparent with Absolute True Center Grid) -->
+    <header class="absolute top-10 left-0 right-0 z-40 transparent-header transition-all duration-300" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-3 items-center h-24 md:h-28">
+                
+                <!-- Left: Hamburger Button -->
+                <div class="justify-self-start">
+                    <button onclick="toggleMobileMenu()" class="text-gold-300 hover:text-white p-2 focus:outline-none" title="Open Navigation Menu">
+                        <i class="fa-solid fa-bars-staggered text-2xl"></i>
+                    </button>
+                </div>
+
+                <!-- Center: Brand Logo Above Name (Guaranteed Center alignment on mobile & tablets) -->
+                <div class="justify-self-center">
+                    <a href="#" class="flex flex-col items-center text-center group">
+                        <div class="relative w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-gold-400 p-0.5 shadow-lg group-hover:scale-105 transition-transform duration-300 mb-1">
+                            <!-- Easy Logo Swap via VS Code -->
+                            <img id="headerLogo" src="logo.png" alt="Qute & Dazzly Logo" class="w-full h-full object-cover rounded-full" 
+                                 onerror="this.onerror=null; this.src='https://placehold.co/200x200/111111/D4AF37?text=Q%26D';">
+                        </div>
+                        <div>
+                            <span class="block font-cinzel text-sm sm:text-base md:text-xl font-bold tracking-wider gold-gradient-text uppercase leading-none">
+                                Qute & Dazzly
+                            </span>
+                            <span class="block text-[7px] sm:text-[8px] md:text-[10px] font-medium tracking-[0.2em] sm:tracking-[0.25em] text-gray-300 uppercase mt-0.5 whitespace-nowrap">
+                                Accessories & More
+                            </span>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Right: Action Icons -->
+                <div class="justify-self-end flex items-center space-x-3 sm:space-x-4 md:space-x-6 text-white">
+                    <!-- Search Toggle -->
+                    <button onclick="toggleSearchModal()" class="hover:text-gold-400 transition-colors p-1 sm:p-2" title="Search">
+                        <i class="fa-solid fa-magnifying-glass text-base sm:text-lg"></i>
+                    </button>
+
+                    <!-- Wishlist Toggle -->
+                    <button onclick="openWishlistModal()" class="relative hover:text-gold-400 transition-colors p-1 sm:p-2" title="Wishlist">
+                        <i class="fa-regular fa-heart text-base sm:text-lg"></i>
+                        <span id="wishlistCount" class="absolute -top-1 -right-1 bg-gold-500 text-obsidian text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">0</span>
+                    </button>
+
+                    <!-- Cart Toggle -->
+                    <button onclick="toggleCartDrawer()" class="relative bg-gold-500 text-obsidian hover:bg-gold-400 p-2 sm:p-2.5 rounded-full transition-all duration-300 shadow-md" title="Shopping Bag">
+                        <i class="fa-solid fa-bag-shopping text-sm sm:text-base"></i>
+                        <span id="cartBadge" class="absolute -top-1 -right-1 bg-red-600 text-white text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center border border-obsidian">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Drawer Overlay -->
+        <div id="mobileMenu" class="hidden bg-obsidian/95 backdrop-blur-md text-white border-b border-gold-600/30 px-6 py-6 space-y-4">
+            <a href="#collections" onclick="toggleMobileMenu()" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">All Collections</a>
+            <a href="#catalog" onclick="toggleMobileMenu(); jumpToCategory('Luxury Bangles')" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">Luxury Bangles</a>
+            <a href="#catalog" onclick="toggleMobileMenu(); jumpToCategory('Gift Sets')" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">Gift Sets</a>
+            <a href="#catalog" onclick="toggleMobileMenu(); jumpToCategory('Watches & Chains')" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">Watches & Chains</a>
+            <a href="#catalog" onclick="toggleMobileMenu(); jumpToCategory('Wholesale')" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">Wholesale Boxes</a>
+            <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
+                <button onclick="toggleMobileMenu(); openAdminModal()" class="text-xs font-bold text-gold-400 flex items-center gap-2">
+                    <i class="fa-solid fa-user-gear"></i> Store Manager Portal
+                </button>
+                <span class="text-xs text-gray-500">@quteanddazzly</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Editorial Hero Showcase Section -->
+    <section class="relative min-h-[90vh] flex items-center justify-center bg-obsidian overflow-hidden pt-28">
+        <!-- Background Image: Replace src or local filename in VS Code -->
+        <div class="absolute inset-0 z-0">
+            <img id="heroBgImg" src="image1.jpg" 
+                 alt="Luxury Jewelry Banner" 
+                 class="w-full h-full object-cover opacity-60 scale-105" 
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=2070&auto=format&fit=crop';">
+            <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/40 to-transparent"></div>
+        </div>
+
+        <!-- Content overlay -->
+        <div class="relative z-10 max-w-5xl mx-auto text-center px-4 sm:px-6 py-20">
+            <div class="inline-block border border-gold-400/40 px-4 py-1.5 rounded-full mb-6 bg-obsidian/70 backdrop-blur-md">
+                <span class="text-xs uppercase tracking-[0.3em] font-semibold text-gold-300">Kingston's Premier Stainless Steel House</span>
+            </div>
+            
+            <h1 class="font-cinzel text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-wide uppercase leading-tight mb-6 drop-shadow-md">
+                Timeless Elegance.<br/>
+                <span class="gold-gradient-text">Unapologetic Luxury.</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-gray-200 text-sm sm:text-base tracking-widest font-light leading-relaxed mb-10 drop-shadow">
+                Discover bespoke stainless steel jewelry, custom statement bangles, and curated luxury gift sets designed to stand out anywhere in the world.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#catalog" class="w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 text-obsidian font-bold text-xs uppercase tracking-[0.2em] shadow-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] transition-all duration-300">
+                    Shop The Collection
+                </a>
+            </div>
+        </div>
+
+        <!-- Floating Scroll Indicator -->
+        <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center z-10">
+            <a href="#catalog" class="text-gold-400/70 hover:text-gold-400 transition-colors">
+                <span class="block text-[10px] tracking-[0.3em] uppercase mb-1">Scroll</span>
+                <i class="fa-solid fa-chevron-down animate-bounce text-sm"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Luxury Feature Pillars -->
+    <section class="py-12 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-4 border-r border-gray-100 last:border-none">
+                    <i class="fa-solid fa-shield-halved text-2xl text-gold-600 mb-2"></i>
+                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Premium Stainless Steel</h4>
+                    <p class="text-[11px] text-gray-500 mt-1">Non-tarnish & durable craftsmanship</p>
+                </div>
+                <div class="p-4 border-r border-gray-100 last:border-none">
+                    <i class="fa-solid fa-box-open text-2xl text-gold-600 mb-2"></i>
+                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Luxury Gift Packaging</h4>
+                    <p class="text-[11px] text-gray-500 mt-1">Signature 3-compartment boxes</p>
+                </div>
+                <div class="p-4 border-r border-gray-100 last:border-none">
+                    <i class="fa-solid fa-truck-fast text-2xl text-gold-600 mb-2"></i>
+                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Islandwide Delivery</h4>
+                    <p class="text-[11px] text-gray-500 mt-1">Direct from Kingston, Jamaica</p>
+                </div>
+                <div class="p-4">
+                    <i class="fa-solid fa-gem text-2xl text-gold-600 mb-2"></i>
+                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Wholesale Rates</h4>
+                    <p class="text-[11px] text-gray-500 mt-1">Special bulk packages available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Category Highlights Grid (Instant Jump on Click) -->
+    <section id="collections" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold block mb-2">Curated Elegance</span>
+                <h2 class="font-cinzel text-3xl md:text-4xl font-bold uppercase text-obsidian tracking-wider">Explore By Category</h2>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+                <div onclick="jumpToCategory('Luxury Bangles')" class="group relative h-64 md:h-80 rounded-lg overflow-hidden cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1611591475155-4282faa2ec9e?q=80&w=800&auto=format&fit=crop" alt="Luxury Bangles" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-sm md:text-base font-bold text-white uppercase tracking-widest">Luxury Bangles</h3>
+                        <p class="text-[10px] text-gold-300 tracking-widest uppercase mt-1">Stackable Statement Pieces</p>
+                    </div>
+                </div>
+
+                <div onclick="jumpToCategory('Gift Sets')" class="group relative h-64 md:h-80 rounded-lg overflow-hidden cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop" alt="Female Gift Sets" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-sm md:text-base font-bold text-white uppercase tracking-widest">Female Gift Sets</h3>
+                        <p class="text-[10px] text-gold-300 tracking-widest uppercase mt-1">Plush Compartment Boxes</p>
+                    </div>
+                </div>
+
+                <div onclick="jumpToCategory('Watches & Chains')" class="group relative h-64 md:h-80 rounded-lg overflow-hidden cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop" alt="Male Gift Boxes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-sm md:text-base font-bold text-white uppercase tracking-widest">Male Gift Boxes</h3>
+                        <p class="text-[10px] text-gold-300 tracking-widest uppercase mt-1">Chains, Watches & Accessories</p>
+                    </div>
+                </div>
+
+                <div onclick="jumpToCategory('Wholesale')" class="group relative h-64 md:h-80 rounded-lg overflow-hidden cursor-pointer shadow-md">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop" alt="Wholesale Packages" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/30 to-transparent"></div>
+                    <div class="absolute bottom-4 left-4 right-4 text-center">
+                        <h3 class="font-cinzel text-sm md:text-base font-bold text-white uppercase tracking-widest">Wholesale Specials</h3>
+                        <p class="text-[10px] text-gold-300 tracking-widest uppercase mt-1">Bulk Packaging & Boxes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Catalog Section (Strictly 2 Columns on Mobile & Tablet) -->
+    <section id="catalog" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6 border-b border-gray-100 pb-6">
+                <div>
+                    <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold block mb-2">High Fashion Catalog</span>
+                    <h2 class="font-cinzel text-3xl md:text-4xl font-bold uppercase text-obsidian tracking-wider">Product Showcase</h2>
+                </div>
+
+                <!-- Category Filters -->
+                <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none text-xs font-semibold uppercase tracking-wider">
+                    <button onclick="filterCategory('All')" class="category-btn active px-4 py-2 rounded-full border border-gold-400 bg-obsidian text-gold-300 whitespace-nowrap transition-all" data-cat="All">All Items</button>
+                    <button onclick="filterCategory('Luxury Bangles')" class="category-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-gold-400 whitespace-nowrap transition-all" data-cat="Luxury Bangles">Bangles</button>
+                    <button onclick="filterCategory('Gift Sets')" class="category-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-gold-400 whitespace-nowrap transition-all" data-cat="Gift Sets">Gift Boxes</button>
+                    <button onclick="filterCategory('Watches & Chains')" class="category-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-gold-400 whitespace-nowrap transition-all" data-cat="Watches & Chains">Chains & Watches</button>
+                    <button onclick="filterCategory('Wholesale')" class="category-btn px-4 py-2 rounded-full border border-gray-200 text-gray-600 hover:border-gold-400 whitespace-nowrap transition-all" data-cat="Wholesale">Wholesale</button>
+                </div>
+            </div>
+
+            <!-- STRICT 2 COLUMNS ON MOBILE & TABLET (grid-cols-2), 4 ON DESKTOP -->
+            <div id="productGrid" class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                <!-- Dynamic Items Inserted via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CUSTOMER REVIEWS SECTION WITH INFINITE MOVING MARQUEE & INTERACTIVE READ -->
+    <section class="py-16 bg-gray-50 border-t border-gray-200 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-xs uppercase tracking-[0.3em] text-gold-600 font-bold block mb-2">Verified Testimonials</span>
+                <h2 class="font-cinzel text-3xl md:text-4xl font-bold uppercase text-obsidian tracking-wider">Customer Reviews</h2>
+                <p class="text-xs text-gray-500 mt-2 tracking-widest uppercase">Hover to pause • Click any card to read full review</p>
+                <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+                <!-- Leave Review Form -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <h3 class="font-cinzel text-lg font-bold text-obsidian uppercase mb-4">Leave Your Review</h3>
+                    <form onsubmit="handleReviewSubmit(event)" class="space-y-4">
+                        <div>
+                            <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Your Name *</label>
+                            <input type="text" id="reviewName" required placeholder="e.g. Shanique Miller" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Rating *</label>
+                            <select id="reviewRating" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none bg-white">
+                                <option value="5">★★★★★ (5/5 - Absolute Luxury)</option>
+                                <option value="4">★★★★☆ (4/5 - Excellent Quality)</option>
+                                <option value="3">★★★☆☆ (3/5 - Good)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Review Message *</label>
+                            <textarea id="reviewComment" rows="3" required placeholder="Tell us about your stainless steel jewelry or islandwide delivery experience..." class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 bg-obsidian text-gold-300 hover:bg-gold-600 hover:text-white font-bold text-xs uppercase tracking-widest transition-colors rounded">
+                            Post Review
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Moving Marquee Reviews Track -->
+                <div class="lg:col-span-2 relative overflow-hidden py-4">
+                    <div class="absolute left-0 inset-y-0 w-12 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+                    <div class="absolute right-0 inset-y-0 w-12 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
+
+                    <div id="reviewsMarqueeTrack" class="flex gap-6 w-max animate-marquee hover:[animation-play-state:paused]">
+                        <!-- Dynamic Marquee Cards Inserted via JS (duplicated for smooth infinite loop) -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL REVIEW READING MODAL -->
+    <div id="readReviewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-blur bg-black/70 hidden">
+        <div class="bg-white max-w-lg w-full rounded-lg overflow-hidden shadow-2xl p-6 relative border border-gold-400">
+            <button onclick="closeReadReviewModal()" class="absolute top-4 right-4 text-gray-400 hover:text-obsidian text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="readReviewContent" class="space-y-4">
+                <!-- Modal content -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Instagram Showcase Banner -->
+    <section class="py-16 bg-obsidian text-white relative overflow-hidden border-t border-b border-gold-600/30">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-block p-3 rounded-full border border-gold-400/40 mb-4 bg-obsidian">
+                <i class="fa-brands fa-instagram text-2xl text-gold-400"></i>
+            </div>
+            <h3 class="font-cinzel text-2xl sm:text-4xl font-bold uppercase tracking-wider mb-2">Follow The Glamour</h3>
+            <p class="text-gold-300 text-xs sm:text-sm tracking-widest font-light mb-6">@quteanddazzly • @quteanddazzlydesignz</p>
+            <p class="max-w-md mx-auto text-gray-400 text-xs mb-8 leading-relaxed">
+                Tag us in your luxury pieces to be featured on our official Instagram feed. Registered Stainless Steel Jewelry Retailer based in Kingston.
+            </p>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-white font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-opacity">
+                <span>View Instagram Feed</span>
+                <i class="fa-solid fa-arrow-right-long text-xs"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-obsidian text-gray-400 pt-16 pb-12 border-t border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <img src="logo.png" alt="Qute & Dazzly Logo" class="w-12 h-12 rounded-full border border-gold-400 object-cover" onerror="this.onerror=null; this.src='https://placehold.co/100x100/111111/D4AF37?text=Q%26D';">
+                        <div>
+                            <span class="font-cinzel text-lg font-bold text-white uppercase tracking-wider block">Qute & Dazzly</span>
+                            <span class="text-[10px] text-gold-400 uppercase tracking-widest">Accessories & More</span>
+                        </div>
+                    </div>
+                    <p class="text-xs leading-relaxed text-gray-400">
+                        High-end stainless steel jewelry, custom bangles, and gift sets designed for statement style. Kingston based online luxury store.
+                    </p>
+                    <div class="text-xs text-gold-300/80 font-medium space-y-1">
+                        <p>📍 Kingston, Jamaica</p>
+                        <p>📞 876.525.2972</p>
+                        <p>❌ No Refunds Policy Strictly Enforced</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-white uppercase tracking-widest mb-4 border-b border-gold-500/20 pb-2">Collections</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#catalog" onclick="jumpToCategory('Luxury Bangles')" class="hover:text-gold-400 transition-colors">Luxury Bangles</a></li>
+                        <li><a href="#catalog" onclick="jumpToCategory('Gift Sets')" class="hover:text-gold-400 transition-colors">Female Gift Sets</a></li>
+                        <li><a href="#catalog" onclick="jumpToCategory('Watches & Chains')" class="hover:text-gold-400 transition-colors">Male Gift Boxes</a></li>
+                        <li><a href="#catalog" onclick="jumpToCategory('Wholesale')" class="hover:text-gold-400 transition-colors">Wholesale Boxes</a></li>
+                        <li><a href="#catalog" onclick="jumpToCategory('All')" class="hover:text-gold-400 transition-colors">Stainless Steel Chains</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-white uppercase tracking-widest mb-4 border-b border-gold-500/20 pb-2">Store Policy</h4>
+                    <ul class="space-y-2 text-xs">
+                        <li><span class="text-gray-400">Kingston Pickup & Delivery</span></li>
+                        <li><span class="text-gray-400">Islandwide Knutsford Express</span></li>
+                        <li><span class="text-gray-400">Stainless Steel Care Guide</span></li>
+                        <li><span class="text-gold-400 font-semibold">Strictly No Refund Policy</span></li>
+                        <li><button onclick="openAdminModal()" class="text-gold-400 hover:underline">Store Manager Login</button></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-cinzel text-sm font-bold text-white uppercase tracking-widest mb-4 border-b border-gold-500/20 pb-2">VIP Club</h4>
+                    <p class="text-xs text-gray-400 mb-4">Subscribe to receive first access to new stock drops and wholesale restocks.</p>
+                    <form onsubmit="handleSubscribe(event)" class="space-y-2">
+                        <input type="email" required placeholder="Enter your email" class="w-full bg-black/60 border border-gold-500/30 px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-400 rounded-none">
+                        <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-obsidian text-xs uppercase font-bold py-2 tracking-widest transition-colors">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-900 pt-6 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-500">
+                <p>&copy; 2026 Qute & Dazzly Accessories & More. All Rights Reserved. EST Sept 2022.</p>
+                <div class="flex space-x-4 mt-4 sm:mt-0">
+                    <a href="#" class="hover:text-gold-400">Privacy Policy</a>
+                    <a href="#" class="hover:text-gold-400">Terms of Service</a>
+                    <a href="#" class="hover:text-gold-400">Instagram</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART SLIDE-OVER DRAWER -->
+    <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white text-obsidian shadow-2xl flex flex-col">
+                <div class="p-6 bg-obsidian text-white flex items-center justify-between border-b border-gold-500/30">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-bag-shopping text-gold-400"></i>
+                        <h2 class="font-cinzel text-lg font-bold tracking-wider uppercase">Your Shopping Bag</h2>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-gray-400 hover:text-white text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Cart items -->
+                </div>
+
+                <div class="p-6 border-t border-gray-100 bg-gray-50 space-y-4">
+                    <div class="flex justify-between text-sm font-semibold">
+                        <span class="uppercase tracking-wider">Subtotal</span>
+                        <span id="cartSubtotal" class="font-cinzel text-gold-600 font-bold">$0 JMD</span>
+                    </div>
+                    <p class="text-[11px] text-gray-500">Taxes and local delivery calculated at checkout.</p>
+                    <button onclick="checkoutWhatsApp()" class="w-full py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 text-obsidian font-bold text-xs uppercase tracking-[0.2em] shadow-lg hover:shadow-gold-400/30 transition-all flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-base"></i>
+                        <span>Checkout via WhatsApp</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK VIEW MODAL -->
+    <div id="quickViewModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-blur bg-black/70 hidden">
+        <div class="bg-white max-w-2xl w-full rounded-lg overflow-hidden shadow-2xl relative border border-gold-400/40">
+            <button onclick="closeQuickView()" class="absolute top-4 right-4 text-gray-500 hover:text-obsidian text-xl z-10 bg-white/80 rounded-full w-8 h-8 flex items-center justify-center">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="quickViewContent" class="grid grid-cols-1 sm:grid-cols-2">
+                <!-- Quick view -->
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENT ADMIN PORTAL MODAL (REAL IMAGE FILE UPLOAD ENABLED) -->
+    <div id="adminModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-blur bg-black/80 hidden">
+        <div class="bg-white max-w-2xl w-full rounded-lg overflow-hidden shadow-2xl border border-gold-400">
+            <div class="bg-obsidian text-white p-6 border-b border-gold-500/30 flex justify-between items-center">
+                <div>
+                    <h3 class="font-cinzel text-xl font-bold text-gold-300 uppercase tracking-wider">Store Manager Portal</h3>
+                    <p class="text-xs text-gray-400">Upload real product images to live showcase</p>
+                </div>
+                <button onclick="closeAdminModal()" class="text-gray-400 hover:text-white text-xl">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleAddNewProduct(event)" class="p-6 space-y-4 max-h-[80vh] overflow-y-auto">
+                <div>
+                    <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Product Title *</label>
+                    <input type="text" id="adminTitle" required placeholder="e.g. 3 Compartments Black Gift Box" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Price ($ JMD) *</label>
+                        <input type="number" id="adminPrice" required placeholder="8000" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Category *</label>
+                        <select id="adminCategory" required class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none bg-white">
+                            <option value="Luxury Bangles">Luxury Bangles</option>
+                            <option value="Gift Sets">Gift Sets</option>
+                            <option value="Watches & Chains">Watches & Chains</option>
+                            <option value="Wholesale">Wholesale Boxes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Badge Tag (Optional)</label>
+                    <input type="text" id="adminBadge" placeholder="e.g. Wholesale Special, Top Seller" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Upload Real Image File *</label>
+                    <input type="file" id="adminFile" accept="image/*" required onchange="previewImageFile(event)" class="text-xs text-gray-500 border border-gray-300 w-full p-2 rounded bg-gray-50">
+                    <input type="hidden" id="adminImageUrl">
+                    <div id="imagePreviewContainer" class="mt-2 hidden">
+                        <img id="imagePreview" class="w-20 h-20 object-cover rounded border border-gold-400">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Description</label>
+                    <textarea id="adminDescription" rows="3" placeholder="Describe the stainless steel quality..." class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none"></textarea>
+                </div>
+
+                <div class="pt-4 flex gap-3">
+                    <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-white font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-opacity rounded">
+                        Publish Product
+                    </button>
+                    <button type="button" onclick="resetDefaultProducts()" class="px-4 py-3 border border-gray-300 text-gray-600 text-xs font-semibold uppercase hover:bg-gray-100 rounded">
+                        Reset Defaults
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- SEARCH MODAL -->
+    <div id="searchModal" class="fixed inset-0 z-50 flex items-start justify-center pt-24 p-4 modal-blur bg-black/70 hidden">
+        <div class="bg-white max-w-xl w-full rounded-lg overflow-hidden shadow-2xl p-6 border border-gold-400">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="font-cinzel text-lg font-bold uppercase tracking-wider">Search Qute & Dazzly</h3>
+                <button onclick="toggleSearchModal()" class="text-gray-400 hover:text-obsidian"><i class="fa-solid fa-xmark text-lg"></i></button>
+            </div>
+            <div class="relative">
+                <input type="text" id="searchInput" onkeyup="handleSearch()" placeholder="Search bangles, gift boxes, chains..." class="w-full border-2 border-gold-400 rounded-lg px-4 py-3 pl-10 text-sm focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3.5 text-gold-600"></i>
+            </div>
+            <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto space-y-2">
+                <!-- Search results -->
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-obsidian text-white border-l-4 border-gold-400 p-4 shadow-xl rounded flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-gold-400 text-lg"></i>
+        <span id="toastMessage" class="text-xs font-medium tracking-wider">Item added to your bag!</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        const initialProducts = [
+            {
+                id: 'prod-1',
+                title: '3 Compartments Black Gift Box',
+                price: 10000,
+                category: 'Gift Sets',
+                badge: 'Top Seller',
+                image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop',
+                description: 'Stylish & durable luxury black watch & jewelry storage gift box. Fits watches, chains & rings seamlessly.'
+            },
+            {
+                id: 'prod-2',
+                title: 'Luxury Gold Stack Bangles',
+                price: 8500,
+                category: 'Luxury Bangles',
+                badge: 'Stainless Steel',
+                image: 'https://images.unsplash.com/photo-1611591475155-4282faa2ec9e?q=80&w=800&auto=format&fit=crop',
+                description: 'Premium gold-finished non-tarnish stainless steel cuff bangles designed for stackable elegance.'
+            },
+            {
+                id: 'prod-3',
+                title: 'Male Luxury Gift Box Set',
+                price: 10000,
+                category: 'Watches & Chains',
+                badge: 'Best Value',
+                image: 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop',
+                description: 'Complete gentlemen set including gold watch, heavy link bracelet & curb chain in a presentation box.'
+            },
+            {
+                id: 'prod-4',
+                title: 'Wholesale Gift Boxes (6 Pack)',
+                price: 4800,
+                category: 'Wholesale',
+                badge: 'Wholesale $800 ea',
+                image: 'https://images.unsplash.com/photo-1605100804763-247f67b3557e?q=80&w=800&auto=format&fit=crop',
+                description: 'Wholesale bundle deal. 6 stylish 3-compartment jewelry gift boxes at $800 JMD each.'
+            }
+        ];
+
+        const initialReviews = [
+            { name: 'Shanique M.', rating: 5, comment: 'The stainless steel bangles do not tarnish at all! Wished them to Kingston and got them same day.', date: 'Nov 2026' },
+            { name: 'Javaughn D.', rating: 5, comment: 'Bought the male luxury gift box set for my birthday. Excellent presentation quality.', date: 'Oct 2026' },
+            { name: 'Keneisha W.', rating: 5, comment: 'Amazing packaging and quick delivery! Will definitely be ordering more wholesale boxes for my boutique.', date: 'Nov 2026' }
+        ];
+
+        let products = JSON.parse(localStorage.getItem('qd_products')) || initialProducts;
+        let cart = JSON.parse(localStorage.getItem('qd_cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('qd_wishlist')) || [];
+        let reviews = JSON.parse(localStorage.getItem('qd_reviews')) || initialReviews;
+        let activeCategory = 'All';
+
+        function saveState() {
+            localStorage.setItem('qd_products', JSON.stringify(products));
+            localStorage.setItem('qd_cart', JSON.stringify(cart));
+            localStorage.setItem('qd_wishlist', JSON.stringify(wishlist));
+            localStorage.setItem('qd_reviews', JSON.stringify(reviews));
+        }
+
+        window.onload = function() {
+            renderProducts();
+            renderReviewsMarquee();
+            updateCartUI();
+            updateWishlistUI();
+        };
+
+        function renderProducts(itemsToRender = null) {
+            const container = document.getElementById('productGrid');
+            const list = itemsToRender || (activeCategory === 'All' ? products : products.filter(p => p.category === activeCategory));
+            
+            if (list.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <i class="fa-solid fa-gem text-4xl text-gold-400 mb-3 block"></i>
+                        <p class="font-cinzel text-lg text-gray-500">No items found in this category.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = list.map(item => {
+                const isWishlisted = wishlist.includes(item.id);
+                return `
+                <div class="group relative bg-white rounded-lg p-2 sm:p-4 gold-border-glow transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative w-full aspect-square rounded overflow-hidden bg-gray-100 mb-3">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/400x400/111111/D4AF37?text=Q%26D';">
+                        
+                        ${item.badge ? `<span class="absolute top-2 left-2 bg-obsidian/90 text-gold-300 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded tracking-widest uppercase border border-gold-400/30">${item.badge}</span>` : ''}
+
+                        <button onclick="toggleWishlist('${item.id}')" class="absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 text-obsidian hover:text-red-600 flex items-center justify-center shadow transition-colors">
+                            <i class="${isWishlisted ? 'fa-solid fa-heart text-red-600' : 'fa-regular fa-heart'} text-xs"></i>
+                        </button>
+
+                        <div class="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-obsidian/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity hidden sm:block">
+                            <button onclick="openQuickView('${item.id}')" class="w-full py-1.5 bg-white/90 text-obsidian text-[10px] font-bold uppercase tracking-widest hover:bg-gold-400 hover:text-white transition-colors">
+                                Quick View
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex-1 flex flex-col justify-between">
+                        <div>
+                            <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-widest text-gold-600 block mb-1">${item.category}</span>
+                            <h3 class="font-cinzel text-xs sm:text-sm font-bold text-obsidian line-clamp-2 leading-tight">${item.title}</h3>
+                        </div>
+
+                        <div class="mt-3 pt-2 border-t border-gray-100 flex items-center justify-between">
+                            <span class="font-cinzel text-xs sm:text-sm font-bold text-gold-600">$${item.price.toLocaleString()} <span class="text-[9px] text-gray-400">JMD</span></span>
+                            
+                            <button onclick="addToCart('${item.id}')" class="bg-obsidian hover:bg-gold-600 text-gold-300 hover:text-white text-xs px-2.5 py-1.5 rounded transition-colors flex items-center gap-1">
+                                <i class="fa-solid fa-plus text-[10px]"></i>
+                                <span class="text-[10px] font-semibold tracking-wider">Add</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `}).join('');
+        }
+
+        function filterCategory(catName) {
+            activeCategory = catName;
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                if (btn.dataset.cat === catName) {
+                    btn.classList.add('bg-obsidian', 'text-gold-300', 'border-gold-400');
+                    btn.classList.remove('border-gray-200', 'text-gray-600');
+                } else {
+                    btn.classList.remove('bg-obsidian', 'text-gold-300', 'border-gold-400');
+                    btn.classList.add('border-gray-200', 'text-gray-600');
+                }
+            });
+            renderProducts();
+        }
+
+        function jumpToCategory(catName) {
+            filterCategory(catName);
+            const catalogEl = document.getElementById('catalog');
+            if (catalogEl) {
+                catalogEl.scrollIntoView({ behavior: 'auto' });
+            }
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            saveState();
+            updateCartUI();
+            showToast(`Added "${product.title}" to bag`);
+        }
+
+        function updateCartQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (item) {
+                item.quantity += delta;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            saveState();
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const badge = document.getElementById('cartBadge');
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            badge.innerText = totalItems;
+
+            const container = document.getElementById('cartItemsContainer');
+            const subtotalEl = document.getElementById('cartSubtotal');
+
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-400 space-y-2">
+                        <i class="fa-solid fa-bag-shopping text-3xl text-gold-400"></i>
+                        <p class="font-cinzel text-sm">Your shopping bag is empty.</p>
+                    </div>
+                `;
+                subtotalEl.innerText = '$0 JMD';
+                return;
+            }
+
+            let subtotal = 0;
+            container.innerHTML = cart.map(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                return `
+                    <div class="flex items-center gap-3 border-b border-gray-100 pb-3">
+                        <img src="${item.image}" class="w-16 h-16 object-cover rounded border border-gold-300/40">
+                        <div class="flex-1">
+                            <h4 class="font-cinzel text-xs font-bold text-obsidian">${item.title}</h4>
+                            <span class="text-xs text-gold-600 font-semibold">$${item.price.toLocaleString()} JMD</span>
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="updateCartQuantity('${item.id}', -1)" class="w-5 h-5 bg-gray-100 text-xs rounded font-bold">-</button>
+                                <span class="text-xs font-semibold">${item.quantity}</span>
+                                <button onclick="updateCartQuantity('${item.id}', 1)" class="w-5 h-5 bg-gray-100 text-xs rounded font-bold">+</button>
+                            </div>
+                        </div>
+                        <button onclick="updateCartQuantity('${item.id}', -${item.quantity})" class="text-gray-400 hover:text-red-600 text-xs">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            }).join('');
+
+            subtotalEl.innerText = `$${subtotal.toLocaleString()} JMD`;
+        }
+
+        function toggleCartDrawer() {
+            document.getElementById('cartDrawer').classList.toggle('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                showToast('Your bag is empty!');
+                return;
+            }
+
+            let msg = 'Hi Qute & Dazzly Accessories! I would like to order:\n\n';
+            let total = 0;
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                msg += `• ${item.title} (x${item.quantity}) - $${itemTotal.toLocaleString()} JMD\n`;
+            });
+            msg += `\nTotal: $${total.toLocaleString()} JMD\nDelivery Location: Kingston / Islandwide`;
+
+            const encoded = encodeURIComponent(msg);
+            window.open(`https://wa.me/18765252972?text=${encoded}`, '_blank');
+        }
+
+        function toggleWishlist(productId) {
+            if (wishlist.includes(productId)) {
+                wishlist = wishlist.filter(id => id !== productId);
+                showToast('Removed from wishlist');
+            } else {
+                wishlist.push(productId);
+                showToast('Saved to wishlist');
+            }
+            saveState();
+            updateWishlistUI();
+            renderProducts();
+        }
+
+        function updateWishlistUI() {
+            document.getElementById('wishlistCount').innerText = wishlist.length;
+        }
+
+        function openWishlistModal() {
+            const wishlistItems = products.filter(p => wishlist.includes(p.id));
+            if (wishlistItems.length === 0) {
+                showToast('Your wishlist is empty!');
+                return;
+            }
+            renderProducts(wishlistItems);
+            window.location.hash = '#catalog';
+        }
+
+        function openQuickView(productId) {
+            const p = products.find(item => item.id === productId);
+            if (!p) return;
+
+            const modalContent = document.getElementById('quickViewContent');
+            modalContent.innerHTML = `
+                <div class="h-64 sm:h-full bg-gray-100">
+                    <img src="${p.image}" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6 flex flex-col justify-between">
+                    <div>
+                        <span class="text-xs uppercase font-bold text-gold-600 tracking-widest">${p.category}</span>
+                        <h3 class="font-cinzel text-xl font-bold text-obsidian mt-1">${p.title}</h3>
+                        <p class="text-lg font-bold text-gold-600 font-cinzel my-2">$${p.price.toLocaleString()} JMD</p>
+                        <p class="text-xs text-gray-600 leading-relaxed mb-4">${p.description}</p>
+                    </div>
+                    <div>
+                        <button onclick="addToCart('${p.id}'); closeQuickView();" class="w-full py-3 bg-obsidian text-gold-300 hover:bg-gold-600 hover:text-white font-bold text-xs uppercase tracking-widest transition-colors rounded">
+                            Add To Bag
+                        </button>
+                    </div>
+                </div>
+            `;
+            document.getElementById('quickViewModal').classList.remove('hidden');
+        }
+
+        function closeQuickView() {
+            document.getElementById('quickViewModal').classList.add('hidden');
+        }
+
+        function openAdminModal() {
+            document.getElementById('adminModal').classList.remove('hidden');
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+        }
+
+        function previewImageFile(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(evt) {
+                    document.getElementById('adminImageUrl').value = evt.target.result;
+                    const preview = document.getElementById('imagePreview');
+                    preview.src = evt.target.result;
+                    document.getElementById('imagePreviewContainer').classList.remove('hidden');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function handleAddNewProduct(e) {
+            e.preventDefault();
+            const title = document.getElementById('adminTitle').value;
+            const price = parseFloat(document.getElementById('adminPrice').value);
+            const category = document.getElementById('adminCategory').value;
+            const badge = document.getElementById('adminBadge').value;
+            const image = document.getElementById('adminImageUrl').value;
+            const description = document.getElementById('adminDescription').value || 'High-grade non-tarnish stainless steel jewelry piece.';
+
+            if (!image) {
+                showToast('Please upload an image file first!');
+                return;
+            }
+
+            const newProd = {
+                id: 'prod-' + Date.now(),
+                title,
+                price,
+                category,
+                badge: badge || 'New Arrival',
+                image,
+                description
+            };
+
+            products.unshift(newProd);
+            saveState();
+            renderProducts();
+            closeAdminModal();
+            showToast(`Product "${title}" uploaded successfully!`);
+            e.target.reset();
+            document.getElementById('imagePreviewContainer').classList.add('hidden');
+        }
+
+        function resetDefaultProducts() {
+            products = initialProducts;
+            saveState();
+            renderProducts();
+            closeAdminModal();
+            showToast('Reset catalog to store defaults.');
+        }
+
+        function renderReviewsMarquee() {
+            const container = document.getElementById('reviewsMarqueeTrack');
+            // Duplicate array so marquee loops seamlessly
+            const loopReviews = [...reviews, ...reviews, ...reviews];
+
+            container.innerHTML = loopReviews.map((r, index) => `
+                <div onclick="openReadReviewModal('${r.name}', ${r.rating}, '${r.comment}', '${r.date}')" class="w-80 bg-white p-5 rounded-lg border border-gold-400/40 shadow-sm cursor-pointer hover:border-gold-500 hover:shadow-md transition-all flex-shrink-0 group">
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="font-cinzel text-xs font-bold text-obsidian group-hover:text-gold-600 transition-colors">${r.name}</h4>
+                        <span class="text-[10px] text-gray-400">${r.date}</span>
+                    </div>
+                    <div class="text-gold-500 text-xs mb-2">
+                        ${'★'.repeat(r.rating)}${'☆'.repeat(5 - r.rating)}
+                    </div>
+                    <p class="text-xs text-gray-600 line-clamp-2 leading-relaxed">${r.comment}</p>
+                    <span class="block text-[10px] text-gold-600 uppercase tracking-widest font-semibold mt-2">Click to read full review →</span>
+                </div>
+            `).join('');
+        }
+
+        function openReadReviewModal(name, rating, comment, date) {
+            const modal = document.getElementById('readReviewModal');
+            const content = document.getElementById('readReviewContent');
+            
+            content.innerHTML = `
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="font-cinzel text-lg font-bold text-obsidian">${name}</h3>
+                    <span class="text-xs text-gray-400">${date}</span>
+                </div>
+                <div class="text-gold-500 text-sm mb-3">
+                    ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}
+                </div>
+                <p class="text-sm text-gray-700 leading-relaxed bg-gray-50 p-4 rounded border border-gray-100">${comment}</p>
+                <button onclick="closeReadReviewModal()" class="w-full mt-4 py-2.5 bg-obsidian text-white font-bold text-xs uppercase tracking-widest rounded hover:bg-gold-600 transition-colors">
+                    Close
+                </button>
+            `;
+            modal.classList.remove('hidden');
+        }
+
+        function closeReadReviewModal() {
+            document.getElementById('readReviewModal').classList.add('hidden');
+        }
+
+        function handleReviewSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('reviewName').value;
+            const rating = parseInt(document.getElementById('reviewRating').value);
+            const comment = document.getElementById('reviewComment').value;
+
+            reviews.unshift({
+                name,
+                rating,
+                comment,
+                date: 'Just now'
+            });
+
+            saveState();
+            renderReviewsMarquee();
+            showToast('Thank you for leaving your review!');
+            e.target.reset();
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function toggleSearchModal() {
+            const modal = document.getElementById('searchModal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('searchInput').focus();
+            }
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (!query.trim()) {
+                resultsContainer.innerHTML = '';
+                return;
+            }
+
+            const matched = products.filter(p => p.title.toLowerCase().includes(query) || p.category.toLowerCase().includes(query));
+
+            if (matched.length === 0) {
+                resultsContainer.innerHTML = '<p class="text-xs text-gray-500 py-2">No matching jewelry items.</p>';
+                return;
+            }
+
+            resultsContainer.innerHTML = matched.map(p => `
+                <div onclick="openQuickView('${p.id}'); toggleSearchModal();" class="flex items-center gap-3 p-2 hover:bg-gray-50 rounded cursor-pointer">
+                    <img src="${p.image}" class="w-10 h-10 object-cover rounded">
+                    <div>
+                        <h4 class="font-cinzel text-xs font-bold text-obsidian">${p.title}</h4>
+                        <span class="text-xs text-gold-600 font-semibold">$${p.price.toLocaleString()} JMD</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleSubscribe(e) {
+            e.preventDefault();
+            showToast('Thank you for joining the Qute & Dazzly VIP Club!');
+            e.target.reset();
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
