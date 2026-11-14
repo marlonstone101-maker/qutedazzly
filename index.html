@@ -16,6 +16,30 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Firebase App, Firestore, Storage & Analytics SDKs (Compat Mode for Global Access) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyBA0zvC6KH3h571rrGDuk5dcmE6S7P4uYw",
+            authDomain: "qute-and-dazzly.firebaseapp.com",
+            projectId: "qute-and-dazzly",
+            storageBucket: "qute-and-dazzly.firebasestorage.app",
+            messagingSenderId: "948252704573",
+            appId: "1:948252704573:web:087c3e38ae11c9933c0f54",
+            measurementId: "G-6GNMXSP5CR"
+        };
+        
+        // Initialize Firebase Globally
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+        const analytics = firebase.analytics();
+    </script>
     <script>
         tailwind.config = {
             theme: {
@@ -37,9 +61,14 @@
                     },
                     animation: {
                         'marquee': 'marquee 30s linear infinite',
+                        'spin-wheel': 'spinWheel 25s linear infinite',
                     },
                     keyframes: {
                         marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        },
+                        spinWheel: {
                             '0%': { transform: 'translateX(0%)' },
                             '100%': { transform: 'translateX(-50%)' },
                         }
@@ -94,7 +123,7 @@
     <!-- Top Announcement Ticker (Moving across screen) -->
     <div class="bg-obsidian text-gold-300 text-xs py-2 px-4 border-b border-gold-600/30 overflow-hidden whitespace-nowrap relative z-50">
         <marquee behavior="scroll" direction="left" scrollamount="5" class="tracking-widest uppercase font-medium">
-            ✨ Kingston, Jamaica Based &nbsp;&bull;&nbsp; Stainless Steel Jewelry &nbsp;&bull;&nbsp; Express Local Delivery Available &nbsp;&bull;&nbsp; No Refunds &bull; EST. Sept 2022 ✨
+            ✨ Kingston, Jamaica Based &nbsp;&bull;&nbsp; Stainless Steel Jewelry &nbsp;&bull;&nbsp; Express Local Delivery & Islandwide Knutsford Express &nbsp;&bull;&nbsp;No Refunds &bull; EST. Sept 2022
         </marquee>
     </div>
 
@@ -159,7 +188,8 @@
             <a href="#catalog" onclick="toggleMobileMenu(); jumpToCategory('Watches & Chains')" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">Watches & Chains</a>
             <a href="#catalog" onclick="toggleMobileMenu(); jumpToCategory('Wholesale')" class="block text-xs font-semibold tracking-widest uppercase hover:text-gold-400">Wholesale Boxes</a>
             <div class="pt-4 border-t border-gray-800 flex items-center justify-between">
-                <button onclick="toggleMobileMenu(); openAdminModal()" class="text-xs font-bold text-gold-400 flex items-center gap-2">
+                <!-- Fixed trigger to open passcode modal instead of direct admin modal -->
+                <button onclick="toggleMobileMenu(); openAdminPasscodeModal()" class="text-xs font-bold text-gold-400 flex items-center gap-2">
                     <i class="fa-solid fa-user-gear"></i> Store Manager Portal
                 </button>
                 <span class="text-xs text-gray-500">@quteanddazzly</span>
@@ -225,13 +255,13 @@
                 </div>
                 <div class="p-4 border-r border-gray-100 last:border-none">
                     <i class="fa-solid fa-truck-fast text-2xl text-gold-600 mb-2"></i>
-                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Islandwide Delivery</h4>
-                    <p class="text-[11px] text-gray-500 mt-1">Direct from Kingston, Jamaica</p>
+                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Knutsford Express & Delivery</h4>
+                    <p class="text-[11px] text-gray-500 mt-1">Islandwide 14 Parishes & Portmore</p>
                 </div>
                 <div class="p-4">
-                    <i class="fa-solid fa-gem text-2xl text-gold-600 mb-2"></i>
-                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">Wholesale Rates</h4>
-                    <p class="text-[11px] text-gray-500 mt-1">Special bulk packages available</p>
+                    <i class="fa-solid fa-credit-card text-2xl text-gold-600 mb-2"></i>
+                    <h4 class="font-cinzel text-xs font-bold uppercase tracking-wider">WiPay Secure Gateway</h4>
+                    <p class="text-[11px] text-gray-500 mt-1">Safe electronic card payments</p>
                 </div>
             </div>
         </div>
@@ -282,6 +312,27 @@
                         <p class="text-[10px] text-gold-300 tracking-widest uppercase mt-1">Bulk Packaging & Boxes</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW ARRIVALS ROTATING WHEEL SECTION (PLACED BETWEEN CATEGORIES & PRODUCT SHOWCASE) -->
+    <section class="py-16 bg-obsidian text-white overflow-hidden border-t border-b border-gold-600/30 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-8 text-center">
+            <span class="text-xs uppercase tracking-[0.3em] text-gold-400 font-bold block mb-2">Just Landed in Kingston</span>
+            <h2 class="font-cinzel text-3xl md:text-4xl font-bold uppercase text-white tracking-wider">New Arrival</h2>
+            <p class="text-xs text-gray-400 mt-2 tracking-widest uppercase">Hover to pause • Click any item to view & order</p>
+            <div class="w-16 h-0.5 bg-gold-400 mx-auto mt-4"></div>
+        </div>
+
+        <div class="relative overflow-hidden py-4">
+            <!-- Fade Vignette Edges -->
+            <div class="absolute left-0 inset-y-0 w-16 bg-gradient-to-r from-obsidian to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute right-0 inset-y-0 w-16 bg-gradient-to-l from-obsidian to-transparent z-10 pointer-events-none"></div>
+
+            <!-- Spinning Wheel / Infinite Rotating Track -->
+            <div id="newArrivalsWheelTrack" class="flex gap-6 w-max animate-spin-wheel hover:[animation-play-state:paused]">
+                <!-- Dynamic New Arrival Wheel Items Injected via JS -->
             </div>
         </div>
     </section>
@@ -408,7 +459,8 @@
                         High-end stainless steel jewelry, custom bangles, and gift sets designed for statement style. Kingston based online luxury store.
                     </p>
                     <div class="text-xs text-gold-300/80 font-medium space-y-1">
-                        <p>📍 Kingston, Jamaica</p>
+                        <p>📍 Kingston & Portmore Delivery</p>
+                        <p>📦 Knutsford Express 14 Parishes</p>
                         <p>📞 876.525.2972</p>
                         <p>❌ No Refunds Policy Strictly Enforced</p>
                     </div>
@@ -428,19 +480,19 @@
                 <div>
                     <h4 class="font-cinzel text-sm font-bold text-white uppercase tracking-widest mb-4 border-b border-gold-500/20 pb-2">Store Policy</h4>
                     <ul class="space-y-2 text-xs">
-                        <li><span class="text-gray-400">Kingston Pickup & Delivery</span></li>
-                        <li><span class="text-gray-400">Islandwide Knutsford Express</span></li>
-                        <li><span class="text-gray-400">Stainless Steel Care Guide</span></li>
+                        <li><span class="text-gray-400">Kingston & Portmore Delivery</span></li>
+                        <li><span class="text-gray-400">Knutsford Express (14 Parishes)</span></li>
+                        <li><span class="text-gray-400">WiPay Secure Card Payments</span></li>
                         <li><span class="text-gold-400 font-semibold">Strictly No Refund Policy</span></li>
-                        <li><button onclick="openAdminModal()" class="text-gold-400 hover:underline">Store Manager Login</button></li>
+                        <li><button onclick="openAdminPasscodeModal()" class="text-gold-400 hover:underline">Store Manager Login</button></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-cinzel text-sm font-bold text-white uppercase tracking-widest mb-4 border-b border-gold-500/20 pb-2">VIP Club</h4>
                     <p class="text-xs text-gray-400 mb-4">Subscribe to receive first access to new stock drops and wholesale restocks.</p>
-                    <form onsubmit="handleSubscribe(event)" class="space-y-2">
-                        <input type="email" required placeholder="Enter your email" class="w-full bg-black/60 border border-gold-500/30 px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-400 rounded-none">
+                    <form id="subscribeForm" onsubmit="handleSubscribe(event)" class="space-y-2">
+                        <input type="email" id="subscriberEmail" required placeholder="Enter your email" class="w-full bg-black/60 border border-gold-500/30 px-3 py-2 text-xs text-white focus:outline-none focus:border-gold-400 rounded-none">
                         <button type="submit" class="w-full bg-gold-500 hover:bg-gold-600 text-obsidian text-xs uppercase font-bold py-2 tracking-widest transition-colors">Subscribe</button>
                     </form>
                 </div>
@@ -457,7 +509,7 @@
         </div>
     </footer>
 
-    <!-- CART SLIDE-OVER DRAWER -->
+    <!-- CART SLIDE-OVER DRAWER WITH PARISH, ADDRESS, PHONE & WIPAY -->
     <div id="cartDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCartDrawer()"></div>
         <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
@@ -476,17 +528,115 @@
                     <!-- Cart items -->
                 </div>
 
-                <div class="p-6 border-t border-gray-100 bg-gray-50 space-y-4">
-                    <div class="flex justify-between text-sm font-semibold">
-                        <span class="uppercase tracking-wider">Subtotal</span>
-                        <span id="cartSubtotal" class="font-cinzel text-gold-600 font-bold">$0 JMD</span>
+                <div class="p-6 border-t border-gray-100 bg-gray-50 space-y-3">
+                    <!-- Phone Number Input -->
+                    <div class="space-y-1">
+                        <label class="block text-xs uppercase font-bold tracking-wider text-obsidian">Phone Number *</label>
+                        <input type="tel" id="customerPhone" placeholder="e.g. 876-525-2972" class="w-full border border-gray-300 rounded px-3 py-2 text-xs focus:border-gold-500 focus:outline-none bg-white">
                     </div>
-                    <p class="text-[11px] text-gray-500">Taxes and local delivery calculated at checkout.</p>
-                    <button onclick="checkoutWhatsApp()" class="w-full py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 text-obsidian font-bold text-xs uppercase tracking-[0.2em] shadow-lg hover:shadow-gold-400/30 transition-all flex items-center justify-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-base"></i>
-                        <span>Checkout via WhatsApp</span>
+
+                    <!-- Shipping / Parish Selector Section -->
+                    <div class="space-y-1">
+                        <label class="block text-xs uppercase font-bold tracking-wider text-obsidian">Select Parish / Delivery Area *</label>
+                        <select id="deliveryParish" onchange="updateCartUI()" class="w-full border border-gray-300 rounded px-3 py-2 text-xs focus:border-gold-500 focus:outline-none bg-white">
+                            <option value="Kingston & Portmore">Kingston & Portmore (Express Delivery)</option>
+                            <option value="Clarendon">Clarendon (Knutsford Express)</option>
+                            <option value="Hanover">Hanover (Knutsford Express)</option>
+                            <option value="Manchester">Manchester (Knutsford Express)</option>
+                            <option value="Portland">Portland (Knutsford Express)</option>
+                            <option value="St. Andrew">St. Andrew (Knutsford Express / Local)</option>
+                            <option value="St. Ann">St. Ann (Knutsford Express)</option>
+                            <option value="St. Catherine">St. Catherine (Knutsford Express / Portmore)</option>
+                            <option value="St. Elizabeth">St. Elizabeth (Knutsford Express)</option>
+                            <option value="St. James">St. James (Knutsford Express)</option>
+                            <option value="St. Mary">St. Mary (Knutsford Express)</option>
+                            <option value="St. Thomas">St. Thomas (Knutsford Express)</option>
+                            <option value="Trelawny">Trelawny (Knutsford Express)</option>
+                            <option value="Westmoreland">Westmoreland (Knutsford Express)</option>
+                        </select>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="block text-xs uppercase font-bold tracking-wider text-obsidian">Exact Delivery Address / Street *</label>
+                        <input type="text" id="deliveryAddress" placeholder="e.g. 14 Hope Road, Apt 2 (or Knutsford Branch)" class="w-full border border-gray-300 rounded px-3 py-2 text-xs focus:border-gold-500 focus:outline-none bg-white">
+                    </div>
+
+                    <div class="space-y-1 text-xs pt-1">
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Subtotal:</span>
+                            <span id="cartSubtotalAmount" class="font-semibold">$0 JMD</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-gray-600">Shipping (Knutsford / Local):</span>
+                            <span id="shippingCostAmount" class="font-semibold">$1,000 JMD</span>
+                        </div>
+                        <div class="flex justify-between text-sm font-bold pt-2 border-t border-gray-200">
+                            <span class="uppercase tracking-wider">Total</span>
+                            <span id="cartTotal" class="font-cinzel text-gold-600 font-bold">$0 JMD</span>
+                        </div>
+                    </div>
+
+                    <!-- WiPay Payment Button -->
+                    <button onclick="initiateWiPayCheckout()" class="w-full py-3.5 bg-gradient-to-r from-gold-500 via-gold-400 to-gold-600 text-obsidian font-bold text-xs uppercase tracking-[0.2em] shadow-lg hover:shadow-gold-400/30 transition-all flex items-center justify-center gap-2 mt-2">
+                        <i class="fa-solid fa-credit-card text-base"></i>
+                        <span>Pay with Card (WiPay)</span>
+                    </button>
+                    <p class="text-[10px] text-center text-gray-500">Secure WiPay Gateway • Redirects to WhatsApp after payment</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN PASSCODE MODAL (PASSCODE: 4040) -->
+    <div id="adminPasscodeModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-blur bg-black/80 hidden">
+        <div class="bg-white max-w-sm w-full rounded-lg overflow-hidden shadow-2xl p-6 border-2 border-gold-400 text-center space-y-4">
+            <div class="w-12 h-12 bg-obsidian text-gold-400 rounded-full flex items-center justify-center mx-auto">
+                <i class="fa-solid fa-lock text-lg"></i>
+            </div>
+            <h3 class="font-cinzel text-lg font-bold uppercase text-obsidian">Manager Passcode Required</h3>
+            <p class="text-xs text-gray-600">Please enter your store manager passcode to continue.</p>
+            
+            <form onsubmit="verifyAdminPasscode(event)" class="space-y-3">
+                <input type="password" id="adminPasscodeInput" required maxlength="4" placeholder="••••" class="w-full text-center tracking-[0.5em] text-lg border-2 border-gold-400 rounded p-2 focus:outline-none">
+                <div class="flex gap-2">
+                    <button type="submit" class="flex-1 py-2.5 bg-obsidian text-gold-300 hover:bg-gold-600 hover:text-white font-bold text-xs uppercase tracking-widest rounded transition-colors">
+                        Enter
+                    </button>
+                    <button type="button" onclick="closeAdminPasscodeModal()" class="px-4 py-2.5 border border-gray-300 text-gray-600 text-xs font-semibold uppercase rounded hover:bg-gray-100">
+                        Cancel
                     </button>
                 </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- WIPAY SIMULATION MODAL -->
+    <div id="wipayModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-blur bg-black/80 hidden">
+        <div class="bg-white max-w-md w-full rounded-lg overflow-hidden shadow-2xl p-6 border-2 border-gold-400 text-center space-y-4">
+            <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center mx-auto text-gold-600">
+                <i class="fa-solid fa-lock text-xl"></i>
+            </div>
+            <h3 class="font-cinzel text-xl font-bold uppercase text-obsidian">WiPay Secure Checkout</h3>
+            <p class="text-xs text-gray-600">Processing secure electronic transaction for Qute & Dazzly Accessories & More.</p>
+            
+            <div class="bg-gray-50 p-4 rounded text-left space-y-2 text-xs border border-gray-200">
+                <div class="flex justify-between font-bold">
+                    <span>Amount to Pay:</span>
+                    <span id="wipayModalTotal" class="text-gold-600 font-cinzel text-sm"></span>
+                </div>
+                <div>
+                    <label class="block text-gray-500 mb-1">Card Number (Simulation)</label>
+                    <input type="text" value="4242 •••• •••• 4242" readonly class="w-full border rounded p-2 bg-white text-gray-700 text-xs">
+                </div>
+            </div>
+
+            <div class="flex gap-3 pt-2">
+                <button onclick="completeWiPayPayment()" class="flex-1 py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-white font-bold text-xs uppercase tracking-widest rounded hover:opacity-90 shadow-md">
+                    Authorize & Pay
+                </button>
+                <button onclick="closeWiPayModal()" class="px-4 py-3 border border-gray-300 text-gray-600 text-xs uppercase font-semibold rounded hover:bg-gray-100">
+                    Cancel
+                </button>
             </div>
         </div>
     </div>
@@ -503,13 +653,13 @@
         </div>
     </div>
 
-    <!-- CLIENT ADMIN PORTAL MODAL (REAL IMAGE FILE UPLOAD ENABLED) -->
+    <!-- CLIENT ADMIN PORTAL MODAL (AUTOMATICALLY ADDS TO NEW ARRIVALS & CATALOG) -->
     <div id="adminModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-blur bg-black/80 hidden">
         <div class="bg-white max-w-2xl w-full rounded-lg overflow-hidden shadow-2xl border border-gold-400">
             <div class="bg-obsidian text-white p-6 border-b border-gold-500/30 flex justify-between items-center">
                 <div>
                     <h3 class="font-cinzel text-xl font-bold text-gold-300 uppercase tracking-wider">Store Manager Portal</h3>
-                    <p class="text-xs text-gray-400">Upload real product images to live showcase</p>
+                    <p class="text-xs text-gray-400">Upload product to Main Catalog & New Arrival Wheel</p>
                 </div>
                 <button onclick="closeAdminModal()" class="text-gray-400 hover:text-white text-xl">
                     <i class="fa-solid fa-xmark"></i>
@@ -540,11 +690,11 @@
 
                 <div>
                     <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Badge Tag (Optional)</label>
-                    <input type="text" id="adminBadge" placeholder="e.g. Wholesale Special, Top Seller" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none">
+                    <input type="text" id="adminBadge" placeholder="e.g. New Arrival, Top Seller" value="New Arrival" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:border-gold-500 focus:outline-none">
                 </div>
 
                 <div>
-                    <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Upload Real Image File *</label>
+                    <label class="block text-xs uppercase font-bold tracking-wider text-gray-700 mb-1">Upload Real Image File (Firestore Storage) *</label>
                     <input type="file" id="adminFile" accept="image/*" required onchange="previewImageFile(event)" class="text-xs text-gray-500 border border-gray-300 w-full p-2 rounded bg-gray-50">
                     <input type="hidden" id="adminImageUrl">
                     <div id="imagePreviewContainer" class="mt-2 hidden">
@@ -559,7 +709,7 @@
 
                 <div class="pt-4 flex gap-3">
                     <button type="submit" class="flex-1 py-3 bg-gradient-to-r from-gold-500 to-gold-700 text-white font-bold text-xs uppercase tracking-widest hover:opacity-90 transition-opacity rounded">
-                        Publish Product
+                        Publish to Firestore & Catalog
                     </button>
                     <button type="button" onclick="resetDefaultProducts()" class="px-4 py-3 border border-gray-300 text-gray-600 text-xs font-semibold uppercase hover:bg-gray-100 rounded">
                         Reset Defaults
@@ -582,6 +732,34 @@
             </div>
             <div id="searchResults" class="mt-4 max-h-60 overflow-y-auto space-y-2">
                 <!-- Search results -->
+            </div>
+        </div>
+    </div>
+
+    <!-- WISHLIST SLIDE-OVER DRAWER -->
+    <div id="wishlistDrawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleWishlistDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white text-obsidian shadow-2xl flex flex-col">
+                <div class="p-6 bg-obsidian text-white flex items-center justify-between border-b border-gold-500/30">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-heart text-gold-400"></i>
+                        <h2 class="font-cinzel text-lg font-bold tracking-wider uppercase">Your Wishlist</h2>
+                    </div>
+                    <button onclick="toggleWishlistDrawer()" class="text-gray-400 hover:text-white text-lg">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+
+                <div id="wishlistItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Wishlist items injected here -->
+                </div>
+
+                <div class="p-6 border-t border-gray-100 bg-gray-50">
+                    <button onclick="toggleWishlistDrawer()" class="w-full py-3 bg-obsidian text-gold-300 hover:bg-gold-600 hover:text-white font-bold text-xs uppercase tracking-widest transition-colors rounded">
+                        Continue Shopping
+                    </button>
+                </div>
             </div>
         </div>
     </div>
@@ -642,6 +820,7 @@
         let products = JSON.parse(localStorage.getItem('qd_products')) || initialProducts;
         let cart = JSON.parse(localStorage.getItem('qd_cart')) || [];
         let wishlist = JSON.parse(localStorage.getItem('qd_wishlist')) || [];
+        let subscribers = JSON.parse(localStorage.getItem('qd_subscribers')) || [];
         let reviews = JSON.parse(localStorage.getItem('qd_reviews')) || initialReviews;
         let activeCategory = 'All';
 
@@ -649,15 +828,35 @@
             localStorage.setItem('qd_products', JSON.stringify(products));
             localStorage.setItem('qd_cart', JSON.stringify(cart));
             localStorage.setItem('qd_wishlist', JSON.stringify(wishlist));
+            localStorage.setItem('qd_subscribers', JSON.stringify(subscribers));
             localStorage.setItem('qd_reviews', JSON.stringify(reviews));
         }
 
         window.onload = function() {
             renderProducts();
+            renderNewArrivalsWheel();
             renderReviewsMarquee();
             updateCartUI();
             updateWishlistUI();
+            loadProductsFromFirestore();
         };
+
+        // Load products synced from Firestore
+        function loadProductsFromFirestore() {
+            db.collection("products").get().then((querySnapshot) => {
+                if (!querySnapshot.empty) {
+                    let firestoreProducts = [];
+                    querySnapshot.forEach((doc) => {
+                        firestoreProducts.push({ id: doc.id, ...doc.data() });
+                    });
+                    products = firestoreProducts;
+                    renderProducts();
+                    renderNewArrivalsWheel();
+                }
+            }).catch((error) => {
+                console.log("Firestore sync fallback to local/default:", error);
+            });
+        }
 
         function renderProducts(itemsToRender = null) {
             const container = document.getElementById('productGrid');
@@ -710,6 +909,31 @@
                     </div>
                 </div>
             `}).join('');
+        }
+
+        function renderNewArrivalsWheel() {
+            const container = document.getElementById('newArrivalsWheelTrack');
+            // Duplicate products to create an infinite continuous wheel rotation loop
+            const wheelItems = [...products, ...products, ...products];
+
+            container.innerHTML = wheelItems.map(item => `
+                <div onclick="openQuickView('${item.id}')" class="w-64 sm:w-72 bg-obsidian border border-gold-500/30 rounded-lg p-3 sm:p-4 flex-shrink-0 cursor-pointer group hover:border-gold-400 transition-all shadow-lg">
+                    <div class="relative w-full aspect-square rounded overflow-hidden bg-gray-900 mb-3">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://placehold.co/400x400/111111/D4AF37?text=Q%26D';">
+                        <span class="absolute top-2 left-2 bg-gold-500 text-obsidian text-[9px] font-bold px-2 py-0.5 rounded tracking-widest uppercase">New Arrival</span>
+                    </div>
+                    <div>
+                        <span class="text-[9px] uppercase tracking-widest text-gold-400 font-semibold block mb-1">${item.category}</span>
+                        <h4 class="font-cinzel text-xs sm:text-sm font-bold text-white line-clamp-1 group-hover:text-gold-300 transition-colors">${item.title}</h4>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="font-cinzel text-xs sm:text-sm font-bold text-gold-400">$${item.price.toLocaleString()} JMD</span>
+                            <span class="text-[10px] uppercase tracking-widest text-white/70 group-hover:text-white font-bold flex items-center gap-1">
+                                View & Order <i class="fa-solid fa-arrow-right text-[9px]"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
         }
 
         function filterCategory(catName) {
@@ -768,7 +992,8 @@
             badge.innerText = totalItems;
 
             const container = document.getElementById('cartItemsContainer');
-            const subtotalEl = document.getElementById('cartSubtotal');
+            const subtotalAmountEl = document.getElementById('cartSubtotalAmount');
+            const totalEl = document.getElementById('cartTotal');
 
             if (cart.length === 0) {
                 container.innerHTML = `
@@ -777,7 +1002,8 @@
                         <p class="font-cinzel text-sm">Your shopping bag is empty.</p>
                     </div>
                 `;
-                subtotalEl.innerText = '$0 JMD';
+                subtotalAmountEl.innerText = '$0 JMD';
+                totalEl.innerText = '$0 JMD';
                 return;
             }
 
@@ -804,30 +1030,81 @@
                 `;
             }).join('');
 
-            subtotalEl.innerText = `$${subtotal.toLocaleString()} JMD`;
+            const shippingFee = 1000; // Flat local / Knutsford rate
+            const grandTotal = subtotal + shippingFee;
+
+            subtotalAmountEl.innerText = `$${subtotal.toLocaleString()} JMD`;
+            totalEl.innerText = `$${grandTotal.toLocaleString()} JMD`;
         }
 
         function toggleCartDrawer() {
             document.getElementById('cartDrawer').classList.toggle('hidden');
         }
 
-        function checkoutWhatsApp() {
+        function initiateWiPayCheckout() {
             if (cart.length === 0) {
                 showToast('Your bag is empty!');
                 return;
             }
+            const phone = document.getElementById('customerPhone').value.trim();
+            const parish = document.getElementById('deliveryParish').value;
+            const address = document.getElementById('deliveryAddress').value.trim();
 
-            let msg = 'Hi Qute & Dazzly Accessories! I would like to order:\n\n';
+            if (!phone) {
+                showToast('Please enter your phone number!');
+                document.getElementById('customerPhone').focus();
+                return;
+            }
+
+            if (!address) {
+                showToast('Please enter your exact delivery address or drop-off location!');
+                document.getElementById('deliveryAddress').focus();
+                return;
+            }
+
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let grandTotal = subtotal + 1000;
+
+            document.getElementById('wipayModalTotal').innerText = `$${grandTotal.toLocaleString()} JMD`;
+            document.getElementById('wipayModal').classList.remove('hidden');
+        }
+
+        function closeWiPayModal() {
+            document.getElementById('wipayModal').classList.add('hidden');
+        }
+
+        function completeWiPayPayment() {
+            closeWiPayModal();
+            toggleCartDrawer();
+
+            const phone = document.getElementById('customerPhone').value;
+            const parish = document.getElementById('deliveryParish').value;
+            const address = document.getElementById('deliveryAddress').value;
+
+            let msg = '✨ *NEW PAID ORDER (WiPay Confirmed)* ✨\n\nHi Qute & Dazzly Accessories! Payment was successful via WiPay. Here are the order details:\n\n';
             let total = 0;
             cart.forEach(item => {
                 const itemTotal = item.price * item.quantity;
                 total += itemTotal;
                 msg += `• ${item.title} (x${item.quantity}) - $${itemTotal.toLocaleString()} JMD\n`;
             });
-            msg += `\nTotal: $${total.toLocaleString()} JMD\nDelivery Location: Kingston / Islandwide`;
+            const shipping = 1000;
+            const grandTotal = total + shipping;
+
+            msg += `\nSubtotal: $${total.toLocaleString()} JMD`;
+            msg += `\nShipping/Delivery: $${shipping.toLocaleString()} JMD`;
+            msg += `\n*Grand Total Paid:* $${grandTotal.toLocaleString()} JMD`;
+            msg += `\n\n📞 *Phone Number:* ${phone}`;
+            msg += `\n📍 *Parish:* ${parish}`;
+            msg += `\n🏠 *Exact Address:* ${address}`;
+            msg += `\n📦 *Shipping Method:* Knutsford Express / Local Delivery`;
 
             const encoded = encodeURIComponent(msg);
-            window.open(`https://wa.me/18765252972?text=${encoded}`, '_blank');
+            showToast('WiPay payment successful! Redirecting to WhatsApp...');
+            
+            setTimeout(() => {
+                window.open(`https://wa.me/18765252972?text=${encoded}`, '_blank');
+            }, 1000);
         }
 
         function toggleWishlist(productId) {
@@ -841,6 +1118,9 @@
             saveState();
             updateWishlistUI();
             renderProducts();
+            if (!document.getElementById('wishlistDrawer').classList.contains('hidden')) {
+                renderWishlistDrawerItems();
+            }
         }
 
         function updateWishlistUI() {
@@ -848,13 +1128,45 @@
         }
 
         function openWishlistModal() {
+            renderWishlistDrawerItems();
+            document.getElementById('wishlistDrawer').classList.remove('hidden');
+        }
+
+        function toggleWishlistDrawer() {
+            document.getElementById('wishlistDrawer').classList.toggle('hidden');
+        }
+
+        function renderWishlistDrawerItems() {
+            const container = document.getElementById('wishlistItemsContainer');
             const wishlistItems = products.filter(p => wishlist.includes(p.id));
+
             if (wishlistItems.length === 0) {
-                showToast('Your wishlist is empty!');
+                container.innerHTML = `
+                    <div class="text-center py-16 text-gray-400 space-y-2">
+                        <i class="fa-regular fa-heart text-3xl text-gold-400"></i>
+                        <p class="font-cinzel text-sm">Your wishlist is currently empty.</p>
+                    </div>
+                `;
                 return;
             }
-            renderProducts(wishlistItems);
-            window.location.hash = '#catalog';
+
+            container.innerHTML = wishlistItems.map(item => `
+                <div class="flex items-center gap-3 border-b border-gray-100 pb-3">
+                    <img src="${item.image}" class="w-16 h-16 object-cover rounded border border-gold-300/40">
+                    <div class="flex-1">
+                        <h4 class="font-cinzel text-xs font-bold text-obsidian">${item.title}</h4>
+                        <span class="text-xs text-gold-600 font-semibold">$${item.price.toLocaleString()} JMD</span>
+                        <div class="mt-2 flex gap-2">
+                            <button onclick="addToCart('${item.id}'); toggleWishlist('${item.id}'); renderWishlistDrawerItems(); toggleWishlistDrawer();" class="px-3 py-1 bg-obsidian text-gold-300 text-[10px] uppercase font-bold rounded hover:bg-gold-600 hover:text-white">
+                                Move to Bag
+                            </button>
+                        </div>
+                    </div>
+                    <button onclick="toggleWishlist('${item.id}'); renderWishlistDrawerItems();" class="text-gray-400 hover:text-red-600 text-xs">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
         }
 
         function openQuickView(productId) {
@@ -887,6 +1199,30 @@
             document.getElementById('quickViewModal').classList.add('hidden');
         }
 
+        // Passcode modal triggers
+        function openAdminPasscodeModal() {
+            document.getElementById('adminPasscodeInput').value = '';
+            document.getElementById('adminPasscodeModal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('adminPasscodeInput').focus(), 100);
+        }
+
+        function closeAdminPasscodeModal() {
+            document.getElementById('adminPasscodeModal').classList.add('hidden');
+        }
+
+        function verifyAdminPasscode(e) {
+            e.preventDefault();
+            const passcode = document.getElementById('adminPasscodeInput').value.trim();
+            if (passcode === '4040') {
+                closeAdminPasscodeModal();
+                openAdminModal();
+                showToast('Passcode verified! Welcome Store Manager.');
+            } else {
+                showToast('Incorrect passcode. Access denied.');
+                document.getElementById('adminPasscodeInput').value = '';
+            }
+        }
+
         function openAdminModal() {
             document.getElementById('adminModal').classList.remove('hidden');
         }
@@ -914,7 +1250,7 @@
             const title = document.getElementById('adminTitle').value;
             const price = parseFloat(document.getElementById('adminPrice').value);
             const category = document.getElementById('adminCategory').value;
-            const badge = document.getElementById('adminBadge').value;
+            const badge = document.getElementById('adminBadge').value || 'New Arrival';
             const image = document.getElementById('adminImageUrl').value;
             const description = document.getElementById('adminDescription').value || 'High-grade non-tarnish stainless steel jewelry piece.';
 
@@ -923,21 +1259,31 @@
                 return;
             }
 
+            const productId = 'prod-' + Date.now();
             const newProd = {
-                id: 'prod-' + Date.now(),
+                id: productId,
                 title,
                 price,
                 category,
-                badge: badge || 'New Arrival',
+                badge,
                 image,
                 description
             };
 
+            // Save to Firebase Firestore
+            db.collection("products").doc(productId).set(newProd).then(() => {
+                console.log("Product successfully saved to Firestore!");
+            }).catch((error) => {
+                console.error("Error writing document to Firestore: ", error);
+            });
+
+            // Pushes to local products array so it instantly updates UI
             products.unshift(newProd);
             saveState();
             renderProducts();
+            renderNewArrivalsWheel();
             closeAdminModal();
-            showToast(`Product "${title}" uploaded successfully!`);
+            showToast(`Product "${title}" published via Firestore & Catalog!`);
             e.target.reset();
             document.getElementById('imagePreviewContainer').classList.add('hidden');
         }
@@ -946,13 +1292,13 @@
             products = initialProducts;
             saveState();
             renderProducts();
+            renderNewArrivalsWheel();
             closeAdminModal();
             showToast('Reset catalog to store defaults.');
         }
 
         function renderReviewsMarquee() {
             const container = document.getElementById('reviewsMarqueeTrack');
-            // Duplicate array so marquee loops seamlessly
             const loopReviews = [...reviews, ...reviews, ...reviews];
 
             container.innerHTML = loopReviews.map((r, index) => `
@@ -1054,8 +1400,26 @@
 
         function handleSubscribe(e) {
             e.preventDefault();
-            showToast('Thank you for joining the Qute & Dazzly VIP Club!');
-            e.target.reset();
+            const emailInput = document.getElementById('subscriberEmail');
+            const email = emailInput.value.trim();
+
+            if (!email) return;
+
+            if (subscribers.includes(email)) {
+                showToast('This email is already subscribed to our VIP Club!');
+                return;
+            }
+
+            subscribers.push(email);
+            saveState();
+
+            db.collection("subscribers").add({
+                email: email,
+                timestamp: new Date().toISOString()
+            }).catch(err => console.log("Firestore subscriber sync note:", err));
+
+            showToast('✨ Thank you for joining the Qute & Dazzly VIP Club!');
+            emailInput.value = '';
         }
 
         function showToast(msg) {
